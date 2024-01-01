@@ -1,10 +1,5 @@
 import re
 
-points = {}
-str_latitude = ''
-str_longitude = ''
-result = []
-
 pat = '([0-9]{2}.[0-9]+)[\s,]+([0-9]{2}.[0-9]+)'
 
 with open('points.txt', encoding="utf8") as f:
