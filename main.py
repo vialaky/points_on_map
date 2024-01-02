@@ -88,10 +88,12 @@ my_location = [49.223800, 37.291500]    # Izyum
 
 
 
-m = folium.Map(
+map = folium.Map(
     location = my_location,
     zoom_start = 10
 )
+
+marker_cluster = MarkerCluster().add_to(map)
 
 
 
@@ -117,9 +119,9 @@ for point in locations:
 
     folium.Marker(
         location=point,
-    ).add_to(m)
+    ).add_to(marker_cluster)
 
 
 output_file = "map.html"
-m.save(output_file)
+map.save(output_file)
 webbrowser.open(output_file, new=2)  # open in new tab
