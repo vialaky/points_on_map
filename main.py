@@ -82,7 +82,7 @@ for i in range(0, len(numbers), 2):
 print('Количество точек:', len(locations))
 
 # my_location = [48.737780, 37.584170]    # Kramatorsk
-my_location = [49.223800, 37.291500]    # Izyum
+my_location = [49.052164, 37.349729]    # Izyum
 
 
 
@@ -92,6 +92,13 @@ map = folium.Map(
     location = my_location,
     zoom_start = 10
 )
+
+folium.CircleMarker(
+    location=my_location,
+    radius=3,
+    color='red',
+    fill_color='Red'
+    ).add_to(map)
 
 marker_cluster = MarkerCluster().add_to(map)
 
