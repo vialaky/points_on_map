@@ -6,6 +6,7 @@ import folium
 
 # Import folium MarkerCluster plugin
 from folium.plugins import MarkerCluster
+from geopy import distance
 
 # Import folium MousePosition plugin
 # from folium.plugins import MousePosition
@@ -21,6 +22,7 @@ pat = '[0-9]{2}.[0-9]+'
 
 numbers = []
 points = []
+distance2point = {}
 
 symbol1 = '.'
 symbol2 = ','
@@ -46,7 +48,7 @@ while True:
             num = int(input())
 
             location = locations_ua[num - 1]
-            print(location)
+            print(f'Your location is: \n{location}')
             break
         else:
             print('!!! No matches. Try again!')
@@ -87,15 +89,18 @@ folium.CircleMarker(
 marker_cluster = MarkerCluster().add_to(map)
 
 for point in points:
-    # point = list(point)
-    # print(point)
 
     folium.Marker(
         location=point,
     ).add_to(marker_cluster)
+
+    distance2point[points.index(point)+1] = round(distance.distance(my_location, tuple(point)).km, 1)
 
 output_file = "map.html"
 map.save(output_file)
 webbrowser.open(output_file, new=2)  # open in new tab
 
 print('Number of locations in message:', len(points))
+
+print('Min distance:', min(distance2point.values()))
+
