@@ -1,0 +1,6 @@
+! Information from the Support Service !
+Due to the need to repair the vehicle.
+
+We know the location of several automotive service and repair stations: HAMBURG (53.509070, 10.059701), BERLIN (52.572793, 13.490182), LEIPZIG (51.305499, 12.420658), NUREMBERG (49.431289, 11008915), ULM (48.351450, 10.003666).
+
+Try to visit the nearest one!
