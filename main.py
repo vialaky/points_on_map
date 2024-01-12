@@ -71,7 +71,7 @@ while True:
         # Create a Folium Map object
         my_map = folium.Map(
             location=my_location,
-            zoom_start=10
+            zoom_start=6
         )
 
         # Initiate a red circle marker
