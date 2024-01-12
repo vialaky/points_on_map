@@ -11,6 +11,7 @@ import webbrowser
 
 
 # Initialize variables
+location = []
 numbers = []
 points = []
 distance2point = {}
@@ -23,7 +24,7 @@ geolocator = Nominatim(user_agent="points_on_map")     # Geocoder’s initializa
 
 
 # Read the message and finding the elements according to the pattern
-with open('message.txt', encoding="utf8") as f:
+with open('message_EXAMPLE.txt', encoding="utf8") as f:
     digits = re.findall(pat, f.read())
 
 # Bring found elements back to form "XX.XXXXXXX XX.XXXXXXX"
