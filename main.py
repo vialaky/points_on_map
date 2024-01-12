@@ -1,39 +1,28 @@
+import folium
+from folium.plugins import MarkerCluster
+
+import geopy
+from geopy import distance
+from geopy.geocoders import Nominatim
+
 import re
 import sys
 import webbrowser
 
-import folium
-import geopy
-import requests
-# import keyboard
 
-# Import folium MarkerCluster plugin
-from folium.plugins import MarkerCluster
-from geopy import distance
-
-# Import folium MousePosition plugin
-# from folium.plugins import MousePosition
-# Import folium DivIcon plugin
-# from folium.features import DivIcon
-
-
-from geopy.geocoders import Nominatim  # Подключаем библиотеку
-
-# pat = '[0-9]{2}.[0-9]+[\s,]+[0-9]{2}.[0-9]+'
-pat = '[0-9]{2}.[0-9]+'
-# pat1 = r'[0-9]{2}[.][0-9]+'
-
+# Initialize variables
 numbers = []
 points = []
 distance2point = {}
 
+pat = '[0-9]{2}.[0-9]+'     # pattern for searching coordinates
 symbol1 = '.'
 symbol2 = ','
 
-geolocator = Nominatim(user_agent="Tester")  # Указываем название приложения (так нужно, да)
+geolocator = Nominatim(user_agent="points_on_map")     # Geocoder’s initialization)
 
-# print('1')
 
+# Reading the message
 with open('message.txt', encoding="utf8") as f:
     digits = re.findall(pat, f.read())
 
@@ -48,7 +37,6 @@ for item in digits:
 for i in range(0, len(numbers), 2):
     points.append(list((numbers[i], numbers[i + 1])))
 
-# print(points)
 
 while True:
 
@@ -75,16 +63,11 @@ while True:
         else:
             print('!!! No matches. Try again!')
 
-
         # print('3')
 
         print(location.latitude, location.longitude)  # И теперь выводим GPS-координаты нужного нам адреса
 
         my_location = [location.latitude, location.longitude]
-
-
-
-
 
         map = folium.Map(
             location=my_location,
@@ -102,12 +85,11 @@ while True:
         marker_cluster = MarkerCluster().add_to(map)
 
         for point in points:
-
             folium.Marker(
                 location=point,
             ).add_to(marker_cluster)
 
-            distance2point[points.index(point)+1] = round(distance.distance(my_location, tuple(point)).km, 1)
+            distance2point[points.index(point) + 1] = round(distance.distance(my_location, tuple(point)).km, 1)
 
         output_file = "map.html"
         map.save(output_file)
@@ -120,6 +102,5 @@ while True:
 
     except TypeError:
         print('!!! No matches. Try again!')
-    except geopy.exc.GeocoderUnavailable: # requests.exceptions.ConnectionError:
+    except geopy.exc.GeocoderUnavailable:  # requests.exceptions.ConnectionError:
         print('Bad connect. Restart...')
-
