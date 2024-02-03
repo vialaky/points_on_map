@@ -16,7 +16,7 @@ numbers = []
 points = []
 distance2point = {}
 
-pat = '[0-9]{2}.[0-9]+'     # pattern for searching coordinates
+pat = r'[0-9]{1,2}.[0-9]+'     # pattern for searching coordinates
 symbol1 = '.'
 symbol2 = ','
 
@@ -25,6 +25,8 @@ geolocator = Nominatim(user_agent="points_on_map")     # Geocoder’s initializa
 
 # Read the message and finding the elements according to the pattern
 with open('message_EXAMPLE.txt', encoding="utf8") as f:
+# with open('message.txt', encoding="utf8") as f:
+
     digits = re.findall(pat, f.read())
 
 # Bring found elements back to form "XX.XXXXXXX"
@@ -99,7 +101,7 @@ while True:
         # Launch a webpage with the map
         output_file = "map.html"
         my_map.save(output_file)
-        # webbrowser.open(output_file, new=2)  # open map in new tab
+        webbrowser.open(output_file, new=2)  # open map in new tab
 
         print('Number of locations in message:', len(points))
         print('Min distance:', min(distance2point.values()))
