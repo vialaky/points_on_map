@@ -27,7 +27,7 @@ geolocator = Nominatim(user_agent="points_on_map")     # Geocoder’s initializa
 with open('message_EXAMPLE.txt', encoding="utf8") as f:
     digits = re.findall(pat, f.read())
 
-# Bring found elements back to form "XX.XXXXXXX"
+# Bring found elements back to form "(X)X.XXXXXXX"
 for item in digits:
     if symbol1 in item:
         numbers.append(float(item))
