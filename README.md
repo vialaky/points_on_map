@@ -27,9 +27,11 @@ python main.py
 ## How to use
 
 The project first prompts the user to enter their location. You need to type the name of the locality where you are located and press Enter. 
+
 ![](https://github.com/vialaky/points_on_map/blob/main/docs/points_on_map_screenshot2.png)
 
 If there are several settlements with the same name, select yours by number in the list.
+
 ![](https://github.com/vialaky/points_on_map/blob/main/docs/points_on_map_screenshot3.png)
 
 The Python script then parses the text file, extracts the coordinates of the points from it and displays them on an interactive map.
