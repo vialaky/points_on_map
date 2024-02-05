@@ -102,7 +102,7 @@ while True:
         webbrowser.open(output_file, new=2)  # open map in new tab
 
         print('Number of locations in message:', len(points))
-        print('Min distance:', min(distance2point.values()))
+        print('Min distance:', min(distance2point.values()), 'km')
         sys.exit()
 
     except TypeError:
