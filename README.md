@@ -6,5 +6,7 @@ This project was created to visually display points on the map. The coordinates 
 
 ## Installation
 
-`git clone https://github.com/vialaky/points_on_map.git`
+```
+git clone https://github.com/vialaky/points_on_map.git
+```
 
