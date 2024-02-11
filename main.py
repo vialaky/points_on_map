@@ -16,7 +16,7 @@ numbers = []
 points = []
 distance2point = {}
 
-pat = '[-0-9]{1,2}.[0-9]+'     # pattern for searching coordinates
+pat = '[-0-9]{1,2}.[0-9]{3,15}'     # pattern for searching coordinates
 symbol1 = '.'
 symbol2 = ','
 
